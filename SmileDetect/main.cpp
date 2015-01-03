@@ -17,6 +17,7 @@
 #include "LIH.h"
 #include "classifier.h"
 #include "Boost.h"
+#include "RT.h"
 
 using std::cout;
 using std::cerr;
@@ -61,6 +62,7 @@ void showArg(){
     << " [-c] : Choose the classifier"                                  << "\n"
     << "      : [0] LinearSVM"                                          << "\n"
     << "      : [1] AdaBoost"                                           << "\n"
+    << "      : [2] Random Forest"                                      << "\n"
     << " [-F] : The data file to classify"                              << "\n"
     << "          ex. Data/LIH.txt"                                     << "\n"
     ;
@@ -235,6 +237,9 @@ void parseArg(Mode& mode,
                             *classifier = NULL;
                             break;
                         case ADABOOST:
+                            *classifier = new Boost();
+                            break;
+                        case RANDOM_TREE:
                             *classifier = new Boost();
                             break;
                         default:

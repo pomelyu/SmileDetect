@@ -1,30 +1,28 @@
 //
-//  Boost.cpp
+//  RT.cpp
 //  SmileDetect
 //
 //  Created by Chien Chin-yu on 2015/1/3.
 //  Copyright (c) 2015年 Chien Chin-yu. All rights reserved.
 //
 
-#include "Boost.h"
-#include "opencv2/ml/ml.hpp"
-#include <iostream>
+#include "RT.h"
 
 void
-Boost::train(){
+RT::train(){
     if (data.rows == 0){
         std::cerr << "Error, no data\n";
-        return;
+        return ;
     }
 
     int cols = data.cols;
-    boost.train(data.colRange(1, cols), CV_ROW_SAMPLE, data.col(0),
-                cv::Mat(), cv::Mat(), cv::Mat(), cv::Mat(), params, false);
+    tree.train(data.colRange(0, cols), CV_ROW_SAMPLE, data.col(cols),
+               cv::Mat(), cv::Mat(), cv::Mat(), cv::Mat(), params);
 }
 
 
 void
-Boost::crossvalidation(){
+RT::crossvalidation(){
     if (data.rows == 0){
         std::cerr << "Error, no data\n";
         return;
@@ -33,7 +31,7 @@ Boost::crossvalidation(){
     cv::Mat shuffle = shuffleRows(data);
     
     // == Set up the boost params
-    cv::BoostParams tmpParams(CvBoost::REAL, 70, 0.95, 1, false, 0);
+    CvRTParams tmpParams(20, 10, 0, false, 10, 0, false, false, 5, false, 0);
     params = tmpParams;
     
     // == Prepare data for crossvalidation
@@ -56,8 +54,8 @@ Boost::crossvalidation(){
         }
         
         int cols = oneFold.cols;
-        boost.train(oneFold.colRange(1, cols), CV_ROW_SAMPLE, oneFold.col(0),
-                    cv::Mat(), cv::Mat(), cv::Mat(), cv::Mat(), params, false);
+        tree.train(data.colRange(0, cols), CV_ROW_SAMPLE, data.col(cols),
+                   cv::Mat(), cv::Mat(), cv::Mat(), cv::Mat(), params);
         float accuracy = predict(Cells[i].colRange(1, cols), Cells[i].col(0));
         
         std::cout << "Fold " << i << ". Accuracy = " << accuracy << "\n";
@@ -68,7 +66,7 @@ Boost::crossvalidation(){
 
 
 float
-Boost::predict(){
+RT::predict(){
     if (data.rows == 0){
         std::cerr << "Error, no data\n";
         return 0;
@@ -77,13 +75,13 @@ Boost::predict(){
     return predict(data.colRange(1, cols), data.col(0));
 }
 
+
 float
-Boost::predict(cv::Mat feature, cv::Mat label){
-    
+RT::predict(cv::Mat feature, cv::Mat label){
     float right = 0;
     for (int i = 0; i < feature.rows; i++) {
         cv::Mat tmp = feature.row(i);
-        if (boost.predict(tmp) == label.at<float>(i, 0)){
+        if (tree.predict(tmp) == label.at<float>(i, 0)){
             right++;
         }
     }

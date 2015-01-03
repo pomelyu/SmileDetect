@@ -67,6 +67,7 @@
 		9A04F14D1A55ABC5004B9194 /* libopencv_videostab.2.4.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A04F1161A55ABC4004B9194 /* libopencv_videostab.2.4.9.dylib */; };
 		9A04F1571A57AEC9004B9194 /* classifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A04F1561A57AEC9004B9194 /* classifier.cpp */; };
 		9A04F15A1A57AF83004B9194 /* Boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A04F1581A57AF83004B9194 /* Boost.cpp */; };
+		9A04F15D1A5839D7004B9194 /* RT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A04F15B1A5839D7004B9194 /* RT.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -148,6 +149,8 @@
 		9A04F1561A57AEC9004B9194 /* classifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = classifier.cpp; sourceTree = "<group>"; };
 		9A04F1581A57AF83004B9194 /* Boost.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Boost.cpp; sourceTree = "<group>"; };
 		9A04F1591A57AF83004B9194 /* Boost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boost.h; sourceTree = "<group>"; };
+		9A04F15B1A5839D7004B9194 /* RT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RT.cpp; sourceTree = "<group>"; };
+		9A04F15C1A5839D7004B9194 /* RT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RT.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +245,8 @@
 				9A04F1511A57ACF2004B9194 /* classifier.h */,
 				9A04F1581A57AF83004B9194 /* Boost.cpp */,
 				9A04F1591A57AF83004B9194 /* Boost.h */,
+				9A04F15B1A5839D7004B9194 /* RT.cpp */,
+				9A04F15C1A5839D7004B9194 /* RT.h */,
 				9A04F0351A55A1A2004B9194 /* CSLBP.cpp */,
 				9A04F0361A55A1A2004B9194 /* CSLBP.h */,
 				9A04F0381A55A1A2004B9194 /* LIH.cpp */,
@@ -373,6 +378,7 @@
 				9A04F03B1A55A1A2004B9194 /* CSLBP.cpp in Sources */,
 				9A04F03C1A55A1A2004B9194 /* LIH.cpp in Sources */,
 				9A04F03D1A55A1A2004B9194 /* main.cpp in Sources */,
+				9A04F15D1A5839D7004B9194 /* RT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

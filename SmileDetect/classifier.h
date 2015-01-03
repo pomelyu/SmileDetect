@@ -17,6 +17,7 @@ using std::string;
 enum Method{
     LINEAR_SVM,
     ADABOOST,
+    RANDOM_TREE
 };
 
 class Classifier{
@@ -29,7 +30,7 @@ public:
     void dataFromFile(string filePath);
     
 protected:
-    
+    cv::Mat shuffleRows(const cv::Mat &matrix);
     cv::Mat data;
 };
 

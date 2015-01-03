@@ -67,3 +67,19 @@ Classifier::dataFromFile(string filePath){
         data.push_back(oneLine);
     }
 }
+
+cv::Mat
+Classifier::shuffleRows(const cv::Mat &matrix)
+{
+    std::vector <int> seeds;
+    for (int cont = 0; cont < matrix.rows; cont++)
+        seeds.push_back(cont);
+    
+    cv::randShuffle(seeds);
+    
+    cv::Mat output;
+    for (int cont = 0; cont < matrix.rows; cont++)
+        output.push_back(matrix.row(seeds[cont]));
+    
+    return output;
+}
