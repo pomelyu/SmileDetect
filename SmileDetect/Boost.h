@@ -17,6 +17,7 @@ class Boost : public Classifier{
     
 public:
     Boost(){ params = boost.get_params(); }
+    ~Boost(){};
     
     void train();
     void crossvalidation();

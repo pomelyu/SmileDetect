@@ -240,7 +240,7 @@ void parseArg(Mode& mode,
                             *classifier = new Boost();
                             break;
                         case RANDOM_TREE:
-                            *classifier = new Boost();
+                            *classifier = new RT();
                             break;
                         default:
                             break;

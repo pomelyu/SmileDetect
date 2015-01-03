@@ -18,6 +18,8 @@
 class RT : public Classifier{
     
 public:
+    RT(){}
+    ~RT(){}
     void train();
     void crossvalidation();
     float predict();

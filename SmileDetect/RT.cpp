@@ -31,7 +31,10 @@ RT::crossvalidation(){
     cv::Mat shuffle = shuffleRows(data);
     
     // == Set up the boost params
-    CvRTParams tmpParams(20, 10, 0, false, 10, 0, false, false, 5, false, 0);
+    // [1] Max depth [2] min sample count
+    // [9] Number of Tree
+    CvRTParams tmpParams(15, 1, 0, false, 10, 0, false, 10,
+                         10, 0, CV_TERMCRIT_ITER);
     params = tmpParams;
     
     // == Prepare data for crossvalidation
@@ -54,7 +57,7 @@ RT::crossvalidation(){
         }
         
         int cols = oneFold.cols;
-        tree.train(data.colRange(0, cols), CV_ROW_SAMPLE, data.col(cols),
+        tree.train(oneFold.colRange(1, cols), CV_ROW_SAMPLE, oneFold.col(0),
                    cv::Mat(), cv::Mat(), cv::Mat(), cv::Mat(), params);
         float accuracy = predict(Cells[i].colRange(1, cols), Cells[i].col(0));
         
