@@ -58,6 +58,16 @@
             ReferencedContainer = "container:SmileDetect.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-m 0 -d 1 -l 0 -f Data/CSLBP.txt -i Data/NonSmile/%1d.jpg"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-m 1 -c 1 -F Data/Training/BoxFilter.txt"
+            isEnabled = "YES">
+         </CommandLineArgument>
+      </CommandLineArguments>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>

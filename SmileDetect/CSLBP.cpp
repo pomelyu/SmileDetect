@@ -58,7 +58,7 @@ CSLBP::getFeature(const Mat image, float** feature){
             int jj = (j-1) / gridSpan;
             int ii = (i-1) / gridSpan;
             
-            Mat local = padded.colRange(i-1, i+1).rowRange(j-1, j+1);
+            Mat local = padded.colRange(i-1, i+2).rowRange(j-1, j+2);
             int kk = sign(local.at<uint8_t>(2,3) - local.at<uint8_t>(2,1))
                 + (sign(local.at<uint8_t>(3,3) - local.at<uint8_t>(1,1)) << 1)
                 + (sign(local.at<uint8_t>(3,2) - local.at<uint8_t>(1,2)) << 2)
@@ -67,7 +67,7 @@ CSLBP::getFeature(const Mat image, float** feature){
             vec[jj * _gridSize * BIT_SIZE + ii * BIT_SIZE + kk] += 1;
         }
     }
-
+    
     *feature = vec;
 }
 

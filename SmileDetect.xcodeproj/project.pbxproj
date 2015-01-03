@@ -65,6 +65,8 @@
 		9A04F14B1A55ABC5004B9194 /* libopencv_videostab.2.4.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A04F1141A55ABC4004B9194 /* libopencv_videostab.2.4.9.dylib */; };
 		9A04F14C1A55ABC5004B9194 /* libopencv_videostab.2.4.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A04F1151A55ABC4004B9194 /* libopencv_videostab.2.4.9.dylib */; };
 		9A04F14D1A55ABC5004B9194 /* libopencv_videostab.2.4.9.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A04F1161A55ABC4004B9194 /* libopencv_videostab.2.4.9.dylib */; };
+		9A04F1571A57AEC9004B9194 /* classifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A04F1561A57AEC9004B9194 /* classifier.cpp */; };
+		9A04F15A1A57AF83004B9194 /* Boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A04F1581A57AF83004B9194 /* Boost.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -142,6 +144,10 @@
 		9A04F1141A55ABC4004B9194 /* libopencv_videostab.2.4.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videostab.2.4.9.dylib; path = ../../../../../usr/local/Cellar/opencv/2.4.9/lib/libopencv_videostab.2.4.9.dylib; sourceTree = "<group>"; };
 		9A04F1151A55ABC4004B9194 /* libopencv_videostab.2.4.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videostab.2.4.9.dylib; path = ../../../../../usr/local/Cellar/opencv/2.4.9/lib/libopencv_videostab.2.4.9.dylib; sourceTree = "<group>"; };
 		9A04F1161A55ABC4004B9194 /* libopencv_videostab.2.4.9.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_videostab.2.4.9.dylib; path = ../../../../../usr/local/Cellar/opencv/2.4.9/lib/libopencv_videostab.2.4.9.dylib; sourceTree = "<group>"; };
+		9A04F1511A57ACF2004B9194 /* classifier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = classifier.h; sourceTree = "<group>"; };
+		9A04F1561A57AEC9004B9194 /* classifier.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = classifier.cpp; sourceTree = "<group>"; };
+		9A04F1581A57AF83004B9194 /* Boost.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Boost.cpp; sourceTree = "<group>"; };
+		9A04F1591A57AF83004B9194 /* Boost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boost.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +238,10 @@
 			children = (
 				9A04F03A1A55A1A2004B9194 /* main.cpp */,
 				9A04F0371A55A1A2004B9194 /* descriptor.h */,
+				9A04F1561A57AEC9004B9194 /* classifier.cpp */,
+				9A04F1511A57ACF2004B9194 /* classifier.h */,
+				9A04F1581A57AF83004B9194 /* Boost.cpp */,
+				9A04F1591A57AF83004B9194 /* Boost.h */,
 				9A04F0351A55A1A2004B9194 /* CSLBP.cpp */,
 				9A04F0361A55A1A2004B9194 /* CSLBP.h */,
 				9A04F0381A55A1A2004B9194 /* LIH.cpp */,
@@ -358,6 +368,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A04F15A1A57AF83004B9194 /* Boost.cpp in Sources */,
+				9A04F1571A57AEC9004B9194 /* classifier.cpp in Sources */,
 				9A04F03B1A55A1A2004B9194 /* CSLBP.cpp in Sources */,
 				9A04F03C1A55A1A2004B9194 /* LIH.cpp in Sources */,
 				9A04F03D1A55A1A2004B9194 /* main.cpp in Sources */,
