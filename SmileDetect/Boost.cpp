@@ -24,7 +24,7 @@ Boost::train(){
 
 
 void
-Boost::crossvalidation(){
+Boost::crossvalidation(float* parameter){
     if (data.rows == 0){
         std::cerr << "Error, no data\n";
         return;
@@ -33,7 +33,8 @@ Boost::crossvalidation(){
     cv::Mat shuffle = shuffleRows(data);
     
     // == Set up the boost params
-    cv::BoostParams tmpParams(CvBoost::REAL, 70, 0.95, 1, false, 0);
+    std::cout << "Depth = " << parameter[0] << "\n";
+    cv::BoostParams tmpParams(CvBoost::REAL, (int)parameter[0], 0.95, 1, false, 0);
     params = tmpParams;
     
     // == Prepare data for crossvalidation

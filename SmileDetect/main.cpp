@@ -18,6 +18,7 @@
 #include "classifier.h"
 #include "Boost.h"
 #include "RT.h"
+#include "NN.h"
 
 using std::cout;
 using std::cerr;
@@ -63,6 +64,7 @@ void showArg(){
     << "      : [0] LinearSVM"                                          << "\n"
     << "      : [1] AdaBoost"                                           << "\n"
     << "      : [2] Random Forest"                                      << "\n"
+    << "      : [3] Netural Network"                                    << "\n"
     << " [-F] : The data file to classify"                              << "\n"
     << "          ex. Data/LIH.txt"                                     << "\n"
     ;
@@ -140,9 +142,15 @@ int main(int argc, const char * argv[]) {
         }
             
         case TRAIN:
+        {
             classifier->dataFromFile(dataPath);
-            classifier->crossvalidation();
+            float params[1] = {5};
+            for (int i = 1; i <= 20; i++) {
+                params[0] = 5*i;
+                classifier->crossvalidation(params);
+            }
             break;
+        }
             
         case TEST:
             
@@ -241,6 +249,9 @@ void parseArg(Mode& mode,
                             break;
                         case RANDOM_TREE:
                             *classifier = new RT();
+                            break;
+                        case NETURAL_NETWORK:
+                            *classifier = new NN();
                             break;
                         default:
                             break;

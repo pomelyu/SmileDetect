@@ -68,6 +68,7 @@
 		9A04F1571A57AEC9004B9194 /* classifier.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A04F1561A57AEC9004B9194 /* classifier.cpp */; };
 		9A04F15A1A57AF83004B9194 /* Boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A04F1581A57AF83004B9194 /* Boost.cpp */; };
 		9A04F15D1A5839D7004B9194 /* RT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A04F15B1A5839D7004B9194 /* RT.cpp */; };
+		9AD6E7061A596A5000EBA5A0 /* NN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AD6E7041A596A5000EBA5A0 /* NN.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -151,6 +152,8 @@
 		9A04F1591A57AF83004B9194 /* Boost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Boost.h; sourceTree = "<group>"; };
 		9A04F15B1A5839D7004B9194 /* RT.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RT.cpp; sourceTree = "<group>"; };
 		9A04F15C1A5839D7004B9194 /* RT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RT.h; sourceTree = "<group>"; };
+		9AD6E7041A596A5000EBA5A0 /* NN.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NN.cpp; sourceTree = "<group>"; };
+		9AD6E7051A596A5000EBA5A0 /* NN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NN.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +246,8 @@
 				9A04F0371A55A1A2004B9194 /* descriptor.h */,
 				9A04F1561A57AEC9004B9194 /* classifier.cpp */,
 				9A04F1511A57ACF2004B9194 /* classifier.h */,
+				9AD6E7041A596A5000EBA5A0 /* NN.cpp */,
+				9AD6E7051A596A5000EBA5A0 /* NN.h */,
 				9A04F1581A57AF83004B9194 /* Boost.cpp */,
 				9A04F1591A57AF83004B9194 /* Boost.h */,
 				9A04F15B1A5839D7004B9194 /* RT.cpp */,
@@ -378,6 +383,7 @@
 				9A04F03B1A55A1A2004B9194 /* CSLBP.cpp in Sources */,
 				9A04F03C1A55A1A2004B9194 /* LIH.cpp in Sources */,
 				9A04F03D1A55A1A2004B9194 /* main.cpp in Sources */,
+				9AD6E7061A596A5000EBA5A0 /* NN.cpp in Sources */,
 				9A04F15D1A5839D7004B9194 /* RT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +522,7 @@
 				9A04DD1C1A55A116004B9194 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

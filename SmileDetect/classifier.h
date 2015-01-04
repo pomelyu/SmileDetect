@@ -17,13 +17,14 @@ using std::string;
 enum Method{
     LINEAR_SVM,
     ADABOOST,
-    RANDOM_TREE
+    RANDOM_TREE,
+    NETURAL_NETWORK
 };
 
 class Classifier{
 public:
     virtual void train(){}
-    virtual void crossvalidation(){}
+    virtual void crossvalidation(float* parameter){}
     virtual float predict(){ return 0; }
     virtual float predict(cv::Mat feature, cv::Mat label){ return 0; }
     

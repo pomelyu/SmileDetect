@@ -1,28 +1,28 @@
 //
-//  RT.cpp
+//  NN.cpp
 //  SmileDetect
 //
-//  Created by Chien Chin-yu on 2015/1/3.
-//  Copyright (c) 2015年 Chien Chin-yu. All rights reserved.
+//  Created by CMLab on 1/3/15.
+//  Copyright (c) 2015 Chien Chin-yu. All rights reserved.
 //
 
-#include "RT.h"
+#include "NN.h"
 
 void
-RT::train(){
+NN::train(){
     if (data.rows == 0){
         std::cerr << "Error, no data\n";
         return ;
     }
-
+    
     int cols = data.cols;
-    tree.train(data.colRange(0, cols), CV_ROW_SAMPLE, data.col(cols),
-               cv::Mat(), cv::Mat(), cv::Mat(), cv::Mat(), params);
+    mlp.train(data.colRange(0, cols), data.col(cols), cv::Mat(),
+               cv::Mat(),params,0);
 }
 
 
 void
-RT::crossvalidation(float* parameter){
+NN::crossvalidation(float* parameter){
     if (data.rows == 0){
         std::cerr << "Error, no data\n";
         return;
@@ -31,12 +31,11 @@ RT::crossvalidation(float* parameter){
     cv::Mat shuffle = shuffleRows(data);
     
     // == Set up the boost params
-    // [1] Max depth [2] min sample count
-    // [9] Number of Tree
-    std::cout << "Mat depth = " << parameter[0]
-              << ", Tree number = " << parameter[1] << "\n";
-    CvRTParams tmpParams((int)parameter[0], 1, 0, false, 10, 0, false, 10,
-                         (int)parameter[1], 0, CV_TERMCRIT_ITER);
+    CvANN_MLP_TrainParams tmpParams(
+        cvTermCriteria( CV_TERMCRIT_ITER + CV_TERMCRIT_EPS, 1000, 0.01 ),
+        CvANN_MLP_TrainParams::RPROP,
+        0.1,0.5);
+    
     params = tmpParams;
     
     // == Prepare data for crossvalidation
@@ -59,8 +58,14 @@ RT::crossvalidation(float* parameter){
         }
         
         int cols = oneFold.cols;
-        tree.train(oneFold.colRange(1, cols), CV_ROW_SAMPLE, oneFold.col(0),
-                   cv::Mat(), cv::Mat(), cv::Mat(), cv::Mat(), params);
+        
+        cv::Mat layers = cv::Mat(3,1,CV_32SC1);
+        layers.row(0) = cv::Scalar(oneFold.cols-1);
+        layers.row(1) = cv::Scalar(20);
+        layers.row(2) = cv::Scalar(1);
+        mlp.create(layers);
+        mlp.train(oneFold.colRange(1, cols),oneFold.col(0), cv::Mat(), cv::Mat(),params);
+        
         float accuracy = predict(Cells[i].colRange(1, cols), Cells[i].col(0));
         
         std::cout << "Fold " << i << ". Accuracy = " << accuracy << "\n";
@@ -71,7 +76,7 @@ RT::crossvalidation(float* parameter){
 
 
 float
-RT::predict(){
+NN::predict(){
     if (data.rows == 0){
         std::cerr << "Error, no data\n";
         return 0;
@@ -82,12 +87,17 @@ RT::predict(){
 
 
 float
-RT::predict(cv::Mat feature, cv::Mat label){
+NN::predict(cv::Mat feature, cv::Mat label){
     float right = 0;
-    for (int i = 0; i < feature.rows; i++) {
-        cv::Mat tmp = feature.row(i);
-        if (tree.predict(tmp) == label.at<float>(i, 0)){
-            right++;
+    cv::Mat output;
+    mlp.predict(feature, output);
+    for (int i = 0; i < label.rows; ++i) {
+//        std::cout << label.at<float>(i,0) << " " << output.at<float>(i,0) << std::endl;
+        if (label.at<float>(i,0) == 0 && output.at<float>(i,0) <= 0) {
+            ++right;
+        }
+        else if(label.at<float>(i,0) == 1 && output.at<float>(i,0) > 0){
+            ++right;
         }
     }
     return (right / feature.rows);

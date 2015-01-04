@@ -20,7 +20,7 @@ public:
     ~Boost(){};
     
     void train();
-    void crossvalidation();
+    void crossvalidation(float* parameter);
     float predict();
     float predict(cv::Mat feature, cv::Mat label);
     
