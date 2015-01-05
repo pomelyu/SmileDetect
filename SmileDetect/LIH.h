@@ -16,6 +16,7 @@ class LIH : public Descriptor{
     
 public:
     LIH(int gridSize, int bitSize);
+    ~LIH(){}
     
     void getFeature(const cv::Mat image, float** feature);
     int getVecSize();

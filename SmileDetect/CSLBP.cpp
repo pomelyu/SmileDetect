@@ -41,9 +41,6 @@ CSLBP::getFeature(const Mat image, float** feature){
     for (int i = 0; i < _gridSize * _gridSize * BIT_SIZE; i++){
         vec[i] = 0;
     }
-    
-    namedWindow("test", CV_WINDOW_AUTOSIZE);
-    imshow("test", padded);
 
     // == Extract Center-Symmetric Local Binary Pattern
     //

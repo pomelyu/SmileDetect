@@ -16,6 +16,7 @@ class CSLBP : public Descriptor{
 
 public:
     CSLBP(int gridSize);
+    ~CSLBP(){}
     
     void getFeature(const cv::Mat image, float** feature);
     int getVecSize();

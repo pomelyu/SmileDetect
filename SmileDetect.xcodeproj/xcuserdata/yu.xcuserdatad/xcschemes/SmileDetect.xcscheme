@@ -60,11 +60,23 @@
       </BuildableProductRunnable>
       <CommandLineArguments>
          <CommandLineArgument
-            argument = "-m 0 -d 1 -l 0 -f Data/CSLBP.txt -i Data/NonSmile/%1d.jpg"
+            argument = "-m 0 -d 2 -l 1 -f Data/CSLBP_LIH.txt -i Data/Smile/%1d.jpg"
             isEnabled = "NO">
          </CommandLineArgument>
          <CommandLineArgument
-            argument = "-m 1 -c 1 -F Data/Training/BoxFilter.txt"
+            argument = "-m 1 -c 3 -F Data/Training/BoxFilter.txt"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-m 0 -d 2 -l 0 -f Data/Testing/CSLBP_LIH_test.txt -i Data/NonSmile_test/%1d.jpg"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-m 0 -d 2 -l 1 -f Data/Testing/CSLBP_LIH_test.txt -i Data/Smile_test/%1d.jpg"
+            isEnabled = "NO">
+         </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-m 2 -c 1 -f Data/Training/CSLBP.txt -F Data/Testing/CSLBP.txt"
             isEnabled = "YES">
          </CommandLineArgument>
       </CommandLineArguments>

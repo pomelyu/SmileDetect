@@ -19,7 +19,7 @@ public:
     Boost(){ params = boost.get_params(); }
     ~Boost(){};
     
-    void train();
+    void train(float* parameter);
     void crossvalidation(float* parameter);
     float predict();
     float predict(cv::Mat feature, cv::Mat label);

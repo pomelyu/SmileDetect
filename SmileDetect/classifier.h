@@ -23,7 +23,7 @@ enum Method{
 
 class Classifier{
 public:
-    virtual void train(){}
+    virtual void train(float* parameter){}
     virtual void crossvalidation(float* parameter){}
     virtual float predict(){ return 0; }
     virtual float predict(cv::Mat feature, cv::Mat label){ return 0; }

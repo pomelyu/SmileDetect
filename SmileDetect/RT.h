@@ -20,7 +20,7 @@ class RT : public Classifier{
 public:
     RT(){}
     ~RT(){}
-    void train();
+    void train(float* parameter);
     void crossvalidation(float* parameter);
     float predict();
     float predict(cv::Mat feature, cv::Mat label);

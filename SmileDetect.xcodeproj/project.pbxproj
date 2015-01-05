@@ -69,6 +69,7 @@
 		9A04F15A1A57AF83004B9194 /* Boost.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A04F1581A57AF83004B9194 /* Boost.cpp */; };
 		9A04F15D1A5839D7004B9194 /* RT.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9A04F15B1A5839D7004B9194 /* RT.cpp */; };
 		9AD6E7061A596A5000EBA5A0 /* NN.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AD6E7041A596A5000EBA5A0 /* NN.cpp */; };
+		9AD6E7091A59ADE900EBA5A0 /* CSLBP_LIH.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 9AD6E7071A59ADE900EBA5A0 /* CSLBP_LIH.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -154,6 +155,8 @@
 		9A04F15C1A5839D7004B9194 /* RT.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RT.h; sourceTree = "<group>"; };
 		9AD6E7041A596A5000EBA5A0 /* NN.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NN.cpp; sourceTree = "<group>"; };
 		9AD6E7051A596A5000EBA5A0 /* NN.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NN.h; sourceTree = "<group>"; };
+		9AD6E7071A59ADE900EBA5A0 /* CSLBP_LIH.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CSLBP_LIH.cpp; sourceTree = "<group>"; };
+		9AD6E7081A59ADE900EBA5A0 /* CSLBP_LIH.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CSLBP_LIH.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,19 +246,10 @@
 			isa = PBXGroup;
 			children = (
 				9A04F03A1A55A1A2004B9194 /* main.cpp */,
-				9A04F0371A55A1A2004B9194 /* descriptor.h */,
-				9A04F1561A57AEC9004B9194 /* classifier.cpp */,
 				9A04F1511A57ACF2004B9194 /* classifier.h */,
-				9AD6E7041A596A5000EBA5A0 /* NN.cpp */,
-				9AD6E7051A596A5000EBA5A0 /* NN.h */,
-				9A04F1581A57AF83004B9194 /* Boost.cpp */,
-				9A04F1591A57AF83004B9194 /* Boost.h */,
-				9A04F15B1A5839D7004B9194 /* RT.cpp */,
-				9A04F15C1A5839D7004B9194 /* RT.h */,
-				9A04F0351A55A1A2004B9194 /* CSLBP.cpp */,
-				9A04F0361A55A1A2004B9194 /* CSLBP.h */,
-				9A04F0381A55A1A2004B9194 /* LIH.cpp */,
-				9A04F0391A55A1A2004B9194 /* LIH.h */,
+				9A04F0371A55A1A2004B9194 /* descriptor.h */,
+				9AD6E70B1A59B64D00EBA5A0 /* Classifier */,
+				9AD6E70A1A59B63100EBA5A0 /* Descriptor */,
 			);
 			path = SmileDetect;
 			sourceTree = "<group>";
@@ -322,6 +316,33 @@
 			name = OpenCV;
 			sourceTree = "<group>";
 		};
+		9AD6E70A1A59B63100EBA5A0 /* Descriptor */ = {
+			isa = PBXGroup;
+			children = (
+				9A04F0351A55A1A2004B9194 /* CSLBP.cpp */,
+				9A04F0361A55A1A2004B9194 /* CSLBP.h */,
+				9A04F0381A55A1A2004B9194 /* LIH.cpp */,
+				9A04F0391A55A1A2004B9194 /* LIH.h */,
+				9AD6E7071A59ADE900EBA5A0 /* CSLBP_LIH.cpp */,
+				9AD6E7081A59ADE900EBA5A0 /* CSLBP_LIH.h */,
+			);
+			name = Descriptor;
+			sourceTree = "<group>";
+		};
+		9AD6E70B1A59B64D00EBA5A0 /* Classifier */ = {
+			isa = PBXGroup;
+			children = (
+				9A04F1561A57AEC9004B9194 /* classifier.cpp */,
+				9AD6E7041A596A5000EBA5A0 /* NN.cpp */,
+				9AD6E7051A596A5000EBA5A0 /* NN.h */,
+				9A04F1581A57AF83004B9194 /* Boost.cpp */,
+				9A04F1591A57AF83004B9194 /* Boost.h */,
+				9A04F15B1A5839D7004B9194 /* RT.cpp */,
+				9A04F15C1A5839D7004B9194 /* RT.h */,
+			);
+			name = Classifier;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -384,6 +405,7 @@
 				9A04F03C1A55A1A2004B9194 /* LIH.cpp in Sources */,
 				9A04F03D1A55A1A2004B9194 /* main.cpp in Sources */,
 				9AD6E7061A596A5000EBA5A0 /* NN.cpp in Sources */,
+				9AD6E7091A59ADE900EBA5A0 /* CSLBP_LIH.cpp in Sources */,
 				9A04F15D1A5839D7004B9194 /* RT.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

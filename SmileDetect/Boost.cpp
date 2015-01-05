@@ -11,12 +11,14 @@
 #include <iostream>
 
 void
-Boost::train(){
+Boost::train(float* parameter){
     if (data.rows == 0){
         std::cerr << "Error, no data\n";
         return;
     }
 
+    cv::BoostParams tmpParams(CvBoost::REAL, (int)parameter[0], 0.95, 1, false, 0);
+    params = tmpParams;
     int cols = data.cols;
     boost.train(data.colRange(1, cols), CV_ROW_SAMPLE, data.col(0),
                 cv::Mat(), cv::Mat(), cv::Mat(), cv::Mat(), params, false);

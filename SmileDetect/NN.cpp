@@ -9,14 +9,28 @@
 #include "NN.h"
 
 void
-NN::train(){
+NN::train(float* parameter){
     if (data.rows == 0){
         std::cerr << "Error, no data\n";
         return ;
     }
     
     int cols = data.cols;
-    mlp.train(data.colRange(0, cols), data.col(cols), cv::Mat(),
+    
+    CvANN_MLP_TrainParams tmpParams(
+            cvTermCriteria( CV_TERMCRIT_ITER + CV_TERMCRIT_EPS, 1000, 0.01 ),
+            CvANN_MLP_TrainParams::RPROP,
+            0.1,0.5);
+    
+    params = tmpParams;
+    
+    cv::Mat layers = cv::Mat(3,1,CV_32SC1);
+    layers.row(0) = cv::Scalar(cols-1);
+    layers.row(1) = cv::Scalar(30);
+    layers.row(2) = cv::Scalar(1);
+    mlp.create(layers);
+    
+    mlp.train(data.colRange(1, cols), data.col(0), cv::Mat(),
                cv::Mat(),params,0);
 }
 

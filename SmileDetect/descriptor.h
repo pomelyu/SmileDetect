@@ -12,6 +12,7 @@
 enum Feature{
     LIH_DESCRIPTOR,     // Local intensity histogram (LIH)
     CSLBP_DESCRIPTOR,   // Center-Symmetric Local Binary Pattern (CS-LBP)
+    CSLBP_LIH_DESCRIPTOR
 };
 
 class Descriptor{

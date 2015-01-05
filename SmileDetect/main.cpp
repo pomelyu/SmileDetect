@@ -14,6 +14,7 @@
 #include "opencv2/imgproc/imgproc.hpp"
 #include "descriptor.h"
 #include "CSLBP.h"
+#include "CSLBP_LIH.h"
 #include "LIH.h"
 #include "classifier.h"
 #include "Boost.h"
@@ -49,10 +50,11 @@ void showArg(){
     << " [-m] : mode"                                                   << "\n"
     << "        [0] Extract feature (need -d, -l, -f, -i)"              << "\n"
     << "        [1] Training (need -c, -F)"                             << "\n"
-    << "        [2] Classify (need -c, -F)"                             << "\n"
+    << "        [2] Classify (need -c, -f, -F)"                         << "\n"
     << " [-d] : Choose the descriptor"                                  << "\n"
     << "        [0] : [LIH]   Local intensity histogram"                << "\n"
     << "        [1] : [CSLBP] Center-Symmetric Local Binary Pattern"    << "\n"
+    << "        [2] : [CSLBP + LIH]"                                    << "\n"
     << " [-l] : Label of the data"                                      << "\n"
     << "        [0] : For non-smile"                                    << "\n"
     << "        [1] : For smile"                                        << "\n"
@@ -134,9 +136,10 @@ int main(int argc, const char * argv[]) {
                         }
                         file << endl;
                         
-                        delete feature;
+                        delete[] feature;
                     }
                 }
+                imgSeq.release();
             }
             break;
         }
@@ -144,23 +147,33 @@ int main(int argc, const char * argv[]) {
         case TRAIN:
         {
             classifier->dataFromFile(dataPath);
-            float params[1] = {5};
-            for (int i = 1; i <= 20; i++) {
-                params[0] = 5*i;
-                classifier->crossvalidation(params);
-            }
+            float params[2] = {10, 5};
+            classifier->crossvalidation(params);
+//            for (int i = 1; i <= 20; i++) {
+//                params[1] = i;
+//                classifier->crossvalidation(params);
+//            }
             break;
         }
             
         case TEST:
-            
+        {
+            classifier->dataFromFile(filePath);
+            float params[2] = {9, 10};
+            classifier->train(params);
+            cout << "Training Fin." << endl;
+            classifier->dataFromFile(dataPath);
+            float result = classifier->predict();
+            cout << result << endl;
             break;
+        }
             
         default:
             break;
     }
     
     delete descriptor;
+    delete classifier;
     return 0;
 }
 
@@ -169,7 +182,7 @@ int exist(string name){
     struct stat buffer;
     char* tmp = new char[name.length()+1];
     std::strcpy(tmp, name.c_str());
-    delete tmp;
+    delete[] tmp;
     return (stat(tmp, &buffer) == 0);
 }
 
@@ -213,6 +226,8 @@ void parseArg(Mode& mode,
                         case CSLBP_DESCRIPTOR:
                             *descriptor = new CSLBP(5);
                             break;
+                        case CSLBP_LIH_DESCRIPTOR:
+                            *descriptor = new CSLBP_LIH(5, 8, 8);
                         default:
                             break;
                     }

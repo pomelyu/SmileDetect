@@ -9,15 +9,20 @@
 #include "RT.h"
 
 void
-RT::train(){
+RT::train(float* parameter){
     if (data.rows == 0){
         std::cerr << "Error, no data\n";
         return ;
     }
-
+    
+    CvRTParams tmpParams((int)parameter[0], 1, 0, false, 10, 0, false, 10,
+                         (int)parameter[1], 0, CV_TERMCRIT_ITER);
+    params = tmpParams;
+    
     int cols = data.cols;
-    tree.train(data.colRange(0, cols), CV_ROW_SAMPLE, data.col(cols),
+    tree.train(data.colRange(1, cols), CV_ROW_SAMPLE, data.col(0),
                cv::Mat(), cv::Mat(), cv::Mat(), cv::Mat(), params);
+    std::cout << "Tree number = " << tree.get_tree_count() << "\n";
 }
 
 

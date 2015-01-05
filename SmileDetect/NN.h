@@ -18,7 +18,7 @@ class NN : public Classifier{
 public:
     NN(){}
     
-    void train();
+    void train(float* parameter);
     void crossvalidation(float* parameter);
     float predict();
     float predict(cv::Mat feature, cv::Mat label);
