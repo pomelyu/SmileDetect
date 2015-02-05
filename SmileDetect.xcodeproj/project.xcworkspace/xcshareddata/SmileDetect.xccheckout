@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>5D0C4096-59A8-4860-ADED-B2B197A89D35</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SmileDetect</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>61E5E3C7D9A71DD492166300E4EEAF3BDD12558A</key>
+		<string>https://github.com/pomelyu/SmileDetect.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SmileDetect.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>61E5E3C7D9A71DD492166300E4EEAF3BDD12558A</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/pomelyu/SmileDetect.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>61E5E3C7D9A71DD492166300E4EEAF3BDD12558A</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>61E5E3C7D9A71DD492166300E4EEAF3BDD12558A</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SmileDetect</string>
+		</dict>
+	</array>
+</dict>
+</plist>
